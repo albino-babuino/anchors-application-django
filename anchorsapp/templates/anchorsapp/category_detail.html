@@ -1,8 +1,10 @@
 {% extends "base/base.html" %} {% block body %}
 
 <style>
-	section {
+	main {
 		margin: 5vh 5vw;
+	}
+	section {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -31,21 +33,23 @@
 </nav>
 
 <!-- Mostrar categoría -->
-<div>
-	<h1>Categoría: {{ object.name|upper }}</h1>
-</div>
+<main>
+	<div>
+		<h1>Categoría: {{ object.name|upper }}</h1>
+	</div>
 
-<!-- Mostrar resultados de búsqueda -->
-<section>
-	{% if anchors %} {% for anchor in anchors %}
-	<a href="{{ anchor.link }}" target="_blank">
-		<div>
-			<img src="{{ anchor.image.url }}" alt="{{ anchor.name }}" />
-			<h2>{{ anchor.name }}</h2>
-		</div>
-	</a>
-	{% endfor %} {% else %}
-	<p>No se encontraron anchors.</p>
-	{% endif %}
-</section>
+	<!-- Mostrar resultados de búsqueda -->
+	<section>
+		{% if anchors %} {% for anchor in anchors %}
+		<a href="{{ anchor.link }}" target="_blank">
+			<div>
+				<img src="{{ anchor.image.url }}" alt="{{ anchor.name }}" />
+				<h2>{{ anchor.name }}</h2>
+			</div>
+		</a>
+		{% endfor %} {% else %}
+		<p>No se encontraron anchors.</p>
+		{% endif %}
+	</section>
+</main>
 {% endblock %}

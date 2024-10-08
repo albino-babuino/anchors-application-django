@@ -11,20 +11,20 @@
 	nav a {
 		font-size: 1.5rem;
 	}
-	section {
+	main {
 		margin: 5vh 5vw;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: flex-start;
 	}
-	section img {
+	main img {
 		width: 200px;
 		height: 200px;
 		border-radius: 10px;
 	}
 
-	section a {
+	main a {
 		margin: 10px;
 		text-align: center;
 	}
@@ -43,7 +43,7 @@
 </nav>
 
 <!-- Mostrar categorías -->
-<section>
+<main>
 	{% if category_object_list %} {% for category in category_object_list %}
 	<a href="{% url 'category_detail' category.pk%}"
 		><div>
@@ -54,5 +54,5 @@
 	{% endfor %} {% else %}
 	<p>No hay categorías disponibles</p>
 	{% endif %}
-</section>
+</main>
 {% endblock %}
