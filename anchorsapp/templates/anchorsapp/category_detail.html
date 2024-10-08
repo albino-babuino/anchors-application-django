@@ -1,0 +1,51 @@
+{% extends "base/base.html" %} {% block body %}
+
+<style>
+	section {
+		margin: 5vh 5vw;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+	section img {
+		width: 100px;
+		height: 100px;
+		border-radius: 10px;
+	}
+
+	section a {
+		margin: 10px;
+		text-align: center;
+	}
+</style>
+<!-- Navbar  -->
+<nav>
+	<a href="{% url 'index' %}">Anchors App</a>
+
+	<!-- Formulario de búsqueda -->
+	<form method="GET" action="">
+		{{ form.as_p }}
+		<button type="submit">Buscar</button>
+	</form>
+</nav>
+
+<!-- Mostrar categoría -->
+<div>
+	<h1>Categoría: {{ object.name|upper }}</h1>
+</div>
+
+<!-- Mostrar resultados de búsqueda -->
+<section>
+	{% if anchors %} {% for anchor in anchors %}
+	<a href="{{ anchor.link }}" target="_blank">
+		<div>
+			<img src="{{ anchor.image.url }}" alt="{{ anchor.name }}" />
+			<h2>{{ anchor.name }}</h2>
+		</div>
+	</a>
+	{% endfor %} {% else %}
+	<p>No se encontraron anchors.</p>
+	{% endif %}
+</section>
+{% endblock %}

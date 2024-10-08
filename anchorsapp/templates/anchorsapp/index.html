@@ -1,0 +1,58 @@
+{% extends "base/base.html" %}
+<!-- Cargamos la ruta de estáticos -->
+{% load static %}
+<!-- Body -->
+{% block body %}
+
+<style>
+	nav {
+		padding-left: 5vw;
+	}
+	nav a {
+		font-size: 1.5rem;
+	}
+	section {
+		margin: 5vh 5vw;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+	section img {
+		width: 200px;
+		height: 200px;
+		border-radius: 10px;
+	}
+
+	section a {
+		margin: 10px;
+		text-align: center;
+	}
+</style>
+
+<!-- Navbar para cambiar entre categorías -->
+<nav>
+	<a href="{% url 'index' %}">Anchors App</a>
+	<div className="nav-links-container">
+		{% for category in category_object_list %}
+		<a href="{% url 'category_detail' category.pk%}"
+			>{{ category.name }}
+		</a>
+		{% endfor %}
+	</div>
+</nav>
+
+<!-- Mostrar categorías -->
+<section>
+	{% if category_object_list %} {% for category in category_object_list %}
+	<a href="{% url 'category_detail' category.pk%}"
+		><div>
+			<img src="{{ category.image.url }}" alt="{{ category.name }}" />
+			<h2>{{ category.name }}</h2>
+		</div></a
+	>
+	{% endfor %} {% else %}
+	<p>No hay categorías disponibles</p>
+	{% endif %}
+</section>
+{% endblock %}

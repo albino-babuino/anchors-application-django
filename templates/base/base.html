@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Anchors App</title>
+	</head>
+	<body>
+		<!-- Estilos -->
+		<style>
+			body {
+				min-height: 100vh;
+				background-image: linear-gradient(
+					93.2deg,
+					rgba(24, 95, 246, 1) 14.4%,
+					rgba(27, 69, 166, 1) 90.8%
+				);
+				color: white;
+				font-family: Arial, sans-serif;
+			}
+			a {
+				color: white;
+				text-decoration: none;
+			}
+
+			a:hover {
+				transform: scale(1.1);
+			}
+
+			nav {
+				display: flex;
+				justify-content: space-between;
+				padding: 2vh 5vw;
+			}
+		</style>
+		<!-- Body -->
+		{% block body %}
+		<p>Contenido de la página</p>
+		{% endblock %}
+	</body>
+</html>
