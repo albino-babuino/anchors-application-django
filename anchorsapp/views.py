@@ -21,26 +21,30 @@ from .forms import SearchAnchorForm
 
 class CategoryDetail(DetailView):
     model = Category
-    template_name = 'anchorsapp/category_detail.html' 
+    template_name = 'anchorsapp/category_detail.html'
     context_object_name = 'category_object'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Obtener la categoría actual
         category = self.object
-        
-        # Obtener el término de búsqueda desde GET
-        search_query = self.request.GET.get('query', '')
 
-        # Crear el formulario de búsqueda
-        form = SearchAnchorForm(self.request.GET)
-        
-        if search_query:
-            # Filtrar los anchors basados en el término de búsqueda
-            anchors = Anchor.objects.filter(category=category, name__icontains=search_query)
-        else:
-            # Mostrar todos los anchors si no hay término de búsqueda
+        # Obtener el término de búsqueda desde la solicitud GET
+        search_query = self.request.GET.get('query', '')
+        reset_search = self.request.GET.get('reset', '')
+
+        # Si el botón de reset se presiona, limpiar el campo de búsqueda
+        if reset_search == 'reset':
+            # Formulario vacío al resetear
+            form = SearchAnchorForm()  # Se crea un formulario sin datos
             anchors = Anchor.objects.filter(category=category)
+        elif search_query:
+            # Si hay búsqueda, filtrar los anchors
+            anchors = Anchor.objects.filter(category=category, name__icontains=search_query)
+            form = SearchAnchorForm(self.request.GET)  # Se mantiene el término en el campo de búsqueda
+        else:
+            # Mostrar todos los anchors si no hay búsqueda
+            anchors = Anchor.objects.filter(category=category)
+            form = SearchAnchorForm()  # Formulario vacío
 
         # Añadir el formulario y los anchors al contexto
         context['form'] = form

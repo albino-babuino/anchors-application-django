@@ -9,7 +9,6 @@
 		<!-- Estilos -->
 		<style>
 			body {
-				min-height: 100vh;
 				background-image: linear-gradient(
 					93.2deg,
 					rgba(24, 95, 246, 1) 14.4%,
@@ -18,6 +17,13 @@
 				color: white;
 				font-family: Arial, sans-serif;
 			}
+			nav {
+				padding-left: 5vw;
+			}
+			nav a {
+				font-size: 1.5rem;
+			}
+
 			a {
 				color: white;
 				text-decoration: none;
@@ -30,18 +36,26 @@
 				transition: transform 0.3s;
 			}
 
-			nav {
-				display: flex;
-				justify-content: space-between;
-				padding: 2vh 5vw;
-			}
-
 			img {
 				object-fit: cover;
 			}
 		</style>
 		<!-- Body -->
-		{% block body %}
+		<!-- Navbar para cambiar entre categorías -->
+		<nav>
+			<a href="{% url 'index' %}">ANCHORS APP</a>
+			<!--  
+	<div className="nav-links-container">
+		{% for category in category_object_list %}
+		<a href="{% url 'category_detail' category.pk%}"
+			>{{ category.name }}
+		</a>
+		{% endfor %}
+	</div>
+    -->
+		</nav>
+		<!-- Contenido de la página -->
+		{% block content %}
 		<p>Contenido de la página</p>
 		{% endblock %}
 	</body>

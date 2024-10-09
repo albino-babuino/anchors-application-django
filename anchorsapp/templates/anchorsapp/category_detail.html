@@ -1,6 +1,64 @@
-{% extends "base/base.html" %} {% block body %}
+{% extends "base/base.html" %} {% block content %}
 
 <style>
+	form {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		float: right;
+	}
+	form input {
+		background: rgba(255, 255, 255, 0.25);
+		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+		backdrop-filter: blur(4px);
+		-webkit-backdrop-filter: blur(4px);
+		border-radius: 5px;
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		height: 1.5rem;
+		outline: none;
+	}
+
+	form input:focus {
+		outline: 0.1rem solid rgba(255, 255, 255, 0.75);
+		color: #ffffff;
+	}
+
+	form input ::placeholder {
+		color: white;
+	}
+
+	::placeholder {
+		color: rgba(255, 255, 255, 0.75);
+	}
+
+	form button {
+		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+		backdrop-filter: blur(4px);
+		-webkit-backdrop-filter: blur(4px);
+		border-radius: 5px;
+		border: none;
+		height: 1.8rem;
+		cursor: pointer;
+		color: #ffffff;
+		margin: 0 2px;
+	}
+
+	form .submit-btn {
+		background: #198754;
+	}
+
+	form .reset-btn {
+		background: #dc3545;
+	}
+
+	form .submit-btn:hover {
+		background-color: #198754;
+	}
+
+	form .reset-btn:hover {
+		background-color: #dc3545;
+	}
+
 	main {
 		margin: 5vh 5vw;
 	}
@@ -21,16 +79,22 @@
 		text-align: center;
 	}
 </style>
-<!-- Navbar  -->
-<nav>
-	<a href="{% url 'index' %}">Anchors App</a>
 
-	<!-- Formulario de búsqueda -->
-	<form method="GET" action="">
-		{{ form.as_p }}
-		<button type="submit">Buscar</button>
-	</form>
-</nav>
+<!-- Formulario de búsqueda -->
+<form method="GET" action="">
+	{{ form.as_p }}
+	<button class="submit-btn" type="submit">Buscar</button>
+	<!-- Botón de reset -->
+	<button
+		class="reset-btn"
+		type="submit"
+		name="reset"
+		value="reset"
+		id="resetButton"
+	>
+		Limpiar
+	</button>
+</form>
 
 <!-- Mostrar categoría -->
 <main>
@@ -48,7 +112,7 @@
 			</div>
 		</a>
 		{% endfor %} {% else %}
-		<p>No se encontraron anchors.</p>
+		<p>No se encontraron resultados.</p>
 		{% endif %}
 	</section>
 </main>
