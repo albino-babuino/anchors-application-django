@@ -60,7 +60,14 @@
 	}
 
 	main {
-		margin: 5vh 5vw;
+		min-height: 85vh;
+		position: absolute;
+		top: 0;
+        left: 0;
+        right: 0;
+		z-index: -10;
+        padding-top: 15vh;
+        padding-left: 5vw;
 	}
 	section {
 		display: flex;
@@ -97,23 +104,26 @@
 </form>
 
 <!-- Mostrar categoría -->
-<main>
-	<div>
-		<h1>Categoría: {{ object.name|upper }}</h1>
-	</div>
 
-	<!-- Mostrar resultados de búsqueda -->
-	<section>
-		{% if anchors %} {% for anchor in anchors %}
-		<a href="{{ anchor.link }}" target="_blank">
-			<div>
-				<img src="{{ anchor.image.url }}" alt="{{ anchor.name }}" />
-				<h2>{{ anchor.name }}</h2>
-			</div>
-		</a>
-		{% endfor %} {% else %}
-		<p>No se encontraron resultados.</p>
-		{% endif %}
-	</section>
+<main style="background-image: {{ object.bg_color}}">
+
+		<div>
+			<h1>{{ object.name|upper }}</h1>
+		</div>
+
+		<!-- Mostrar resultados de búsqueda -->
+		<section>
+			{% if anchors %} {% for anchor in anchors %}
+			<a href="{{ anchor.link }}" target="_blank">
+				<div>
+					<img src="{{ anchor.image.url }}" alt="{{ anchor.name }}" />
+					<h2>{{ anchor.name }}</h2>
+				</div>
+			</a>
+			{% endfor %} {% else %}
+			<p>No se encontraron resultados.</p>
+			{% endif %}
+		</section>
+	</main>
+	{% endblock %}
 </main>
-{% endblock %}

@@ -5,6 +5,7 @@ class Category(models.Model):
     image = models.ImageField(upload_to='category', verbose_name='Imagen')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
+    bg_color = models.CharField(max_length=150, default='#1461f6', verbose_name='Color de fondo')
 
     class Meta: #Metadatos de la clase
         verbose_name = 'Categoría' #Con este nombre se mostrará en el panel de administración
