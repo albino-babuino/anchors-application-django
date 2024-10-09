@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView
 from .models import Category, Anchor
 
 class Index(ListView):
-    queryset = Category.objects.all()
+    queryset = Category.objects.all().order_by('name')
     template_name = 'anchorsapp/index.html'
     context_object_name = 'category_object_list'
     
