@@ -11,6 +11,7 @@ body {
         rgba(24, 95, 246, 1) 14.4%,
         rgba(27, 69, 166, 1) 90.8%
     );
+    font-family: "Roboto", sans-serif;
 }
 
 nav {
@@ -28,13 +29,16 @@ nav a {
 a {
     color: white;
     text-decoration: none;
-    transform: scale(1);
-    transition: transform 0.5s;
+
+    display: flex;
+    align-items: center;
 }
 
-a:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s;
+
+
+nav a img{
+    height: 30px;
+    margin-right: 10px;
 }
 
 img {
@@ -63,9 +67,16 @@ img {
     margin: 10px;
     text-align: center;
     font-size: 0.75rem;
+    transform: scale(1);
+    transition: transform 0.5s;
 }
 
-/** Estilos para el category_detail.html */
+.index-main a:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+/* Estilos para el category_detail.html */
 form {
     display: flex;
     justify-content: center;
@@ -146,9 +157,21 @@ form .icon{
     padding-right: 20vw;
 }
 
-
+.category_detail-main h1{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -5;
+    font-size: 5rem;
+    text-align: center;
+    line-height: calc(100vh - 6rem);
+    opacity: 0.4;
+}
 
 section {
+    padding-top: 10vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -163,7 +186,14 @@ section img {
 section a {
     margin: 1vw;
     text-align: center;
-    font-size: 0.6rem;
+    font-size: 0.75rem;
+    transform: scale(1);
+    transition: transform 0.5s;
+}
+
+section a:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
 }
 
 .not-found{
@@ -188,5 +218,9 @@ section a {
 
     .category_detail-main h1{
         margin-left: 10vw;
+    }
+
+    .category_detail-main h1{
+        font-size: 3rem;
     }
 }

@@ -8,20 +8,24 @@
 		<title>Anchors App</title>
 		<!-- Estilos -->
 		<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
 		<!-- Body -->
 		<nav>
-			<a href="{% url 'index' %}">ANCHORS APP</a>
-			<!--  
-	<div className="nav-links-container">
-		{% for category in category_object_list %}
-		<a href="{% url 'category_detail' category.pk%}"
-			>{{ category.name }}
-		</a>
-		{% endfor %}
-	</div>
-    -->
+			<a href="{% url 'index' %}">
+				<img
+					src="{% static 'images/icons/anchor.png' %}"
+					alt="Inicio"
+				/>
+				Anchors</a
+			>
 		</nav>
 		<!-- Contenido de la página -->
 		{% block content %}
