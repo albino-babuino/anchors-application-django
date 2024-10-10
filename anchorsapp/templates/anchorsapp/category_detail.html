@@ -1,99 +1,14 @@
-{% extends "base/base.html" %} {% block content %}
-
-<style>
-	form {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		float: right;
-        margin-right: 5vw;
-	}
-	form input {
-		background: rgba(255, 255, 255, 0.25);
-		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-		backdrop-filter: blur(4px);
-		-webkit-backdrop-filter: blur(4px);
-		border-radius: 5px;
-		border: 1px solid rgba(255, 255, 255, 0.18);
-		height: 1.5rem;
-		outline: none;
-	}
-
-	form input:focus {
-		outline: 0.1rem solid rgba(255, 255, 255, 0.75);
-		color: #ffffff;
-	}
-
-	form input ::placeholder {
-		color: white;
-	}
-
-	::placeholder {
-		color: rgba(255, 255, 255, 0.75);
-	}
-
-	form button {
-		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-		backdrop-filter: blur(4px);
-		-webkit-backdrop-filter: blur(4px);
-		border-radius: 5px;
-		border: none;
-		height: 1.8rem;
-		cursor: pointer;
-		color: #ffffff;
-		margin: 0 2px;
-	}
-
-	form .submit-btn {
-		background: #198754;
-	}
-
-	form .reset-btn {
-		background: #dc3545;
-	}
-
-	form .submit-btn:hover {
-		background-color: #198754;
-	}
-
-	form .reset-btn:hover {
-		background-color: #dc3545;
-	}
-
-	main {
-		min-height: 85vh;
-		position: absolute;
-		top: 0;
-        left: 0;
-        right: 0;
-		z-index: -10;
-        padding-top: 15vh;
-        padding-left: 20vw;
-        padding-right: 20vw;
-	}
-	section {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-	}
-	section img {
-		width: 90px;
-		height: 90px;
-		border-radius: 10px;
-	}
-
-	section a {
-		margin: 1vw;
-		text-align: center;
-        font-size: 0.6rem;
-	}
-</style>
+<!-- Plantilla base -->  
+{% extends "base/base.html" %} 
+<!-- Cargamos la ruta de estáticos -->
+{% load static %}
+<!-- Contenido -->
+{% block content %}
 
 <!-- Formulario de búsqueda -->
 <form method="GET" action="">
 	{{ form.as_p }}
-	<button class="submit-btn" type="submit">Buscar</button>
+	<button class="submit-btn" type="submit"><img class="icon" src="{% static 'images/icons/search.png' %}" alt="Limpiar" /></button>
 	<!-- Botón de reset -->
 	<button
 		class="reset-btn"
@@ -102,13 +17,13 @@
 		value="reset"
 		id="resetButton"
 	>
-		Limpiar
+    <img class="icon" src="{% static 'images/icons/clear.png' %}" alt="Limpiar" />
 	</button>
 </form>
 
 <!-- Mostrar categoría -->
 
-<main style="background-image: {{ object.bg_color}}">
+<main class="category_detail-main" style="background-image: {{ object.bg_color}}">
 
 		<div>
 			<h1>{{ object.name|upper }}</h1>
@@ -124,7 +39,10 @@
 				</div>
 			</a>
 			{% endfor %} {% else %}
-			<p>No se encontraron resultados.</p>
+            <div class="not-found">
+                <img src="{% static 'images/homer.png' %}" alt="No se encontraron resultados" />
+                <p>¡Mosquis!</p>
+            </div>
 			{% endif %}
 		</section>
 	</main>

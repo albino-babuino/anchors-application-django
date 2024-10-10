@@ -4,31 +4,8 @@
 <!-- Body -->
 {% block content %}
 
-<style>
-	main {
-		margin: 5vh 5vw;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
-		height: 70vh;
-	}
-	main img {
-		width: 125px;
-		height: 125px;
-		border-radius: 10px;
-	}
-
-	main a {
-		margin: 10px;
-		text-align: center;
-		font-size: 0.75rem;
-	}
-</style>
-
 <!-- Mostrar categorías -->
-<main>
+<main class="index-main">
 	{% if category_object_list %} {% for category in category_object_list %}
 	<a href="{% url 'category_detail' category.pk%}"
 		><div>

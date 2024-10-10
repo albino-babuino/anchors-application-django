@@ -1,0 +1,192 @@
+/** Estilos para base.html */
+
+body {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+    background-image: linear-gradient(
+        93.2deg,
+        rgba(24, 95, 246, 1) 14.4%,
+        rgba(27, 69, 166, 1) 90.8%
+    );
+}
+
+nav {
+    padding: 2vh 5vw;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+nav a {
+    font-size: 1.5rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    transform: scale(1);
+    transition: transform 0.5s;
+}
+
+a:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+img {
+    object-fit: cover;
+}
+
+
+
+/** Estilos para el index.html */
+.index-main {
+    margin: 5vh 5vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+.index-main img {
+    width: 125px;
+    height: 125px;
+    border-radius: 10px;
+}
+
+.index-main a {
+    margin: 10px;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+/** Estilos para el category_detail.html */
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin-right: 5vw;
+}
+
+form input {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    height: 1.5rem;
+    outline: none;
+}
+
+form input:focus {
+    outline: 0.1rem solid rgba(255, 255, 255, 0.75);
+    color: #ffffff;
+}
+
+form input ::placeholder {
+    color: white;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+form button {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 5px;
+    border: none;
+    height: 1.75rem;
+    cursor: pointer;
+    color: #ffffff;
+    margin-left: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form .submit-btn {
+    background: #198754;
+}
+
+form .submit-btn:hover {
+    background-color: #198754;
+}
+
+form .reset-btn {
+    background: #dc3545;
+}
+
+form .reset-btn:hover {
+    background-color: #dc3545;
+}
+
+form .icon{
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.category_detail-main {
+    min-height: 85vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -10;
+    padding-top: 15vh;
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+
+
+section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+section img {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+}
+
+section a {
+    margin: 1vw;
+    text-align: center;
+    font-size: 0.6rem;
+}
+
+.not-found{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/** media-query  */
+@media only screen and (max-width: 600px) {
+    .category_detail-main {
+        min-width: 100vw;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    section {
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .category_detail-main h1{
+        margin-left: 10vw;
+    }
+}
