@@ -186,7 +186,7 @@ section img {
 section a {
     margin: 1vw;
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     transform: scale(1);
     transition: transform 0.5s;
 }
@@ -201,6 +201,8 @@ section a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
+    transform: scale(1.5);
 }
 
 /** media-query  */
