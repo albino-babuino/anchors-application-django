@@ -17,8 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	// Inicializar estado de los botones
-	toggleButtons();
+	toggleButtons(); // Inicializa los botones en base al estado del checkbox
 
 	// Añadir evento de cambio al checkbox
 	toggleCheckbox.addEventListener('change', toggleButtons);
+
+	// Event listener para restablecer el checkbox al salir de la página
+	window.addEventListener('beforeunload', () => {
+		toggleCheckbox.checked = false; // Restablecer el checkbox a su estado inicial
+	});
 });
