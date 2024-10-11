@@ -1,28 +1,32 @@
 {% extends "base/base.html" %} {% load static %} {% block content %}
-
-<!-- Verificar si el usuario está autenticado -->
-{% if user.is_authenticated %}
-<div class="auth-buttons">
-	<p>Bienvenido, {{ user.username }}</p>
-	<form method="POST" action="{% url 'logout' %}">
-		{% csrf_token %}
-		<button type="submit">Cerrar sesión</button>
-	</form>
-</div>
-{% else %}
-<a href="{% url 'login' %}">Iniciar sesión</a>
-{% endif %}
+<!-- Formulario de búsqueda -->
+<form method="GET" action="">
+	{{ form.as_p }}
+	<button class="submit-btn" type="submit">
+		<img
+			class="icon"
+			src="{% static 'images/icons/search.png' %}"
+			alt="Buscar"
+		/>
+	</button>
+	<button class="reset-btn" type="submit" name="reset" value="reset">
+		<img
+			class="icon"
+			src="{% static 'images/icons/clear.png' %}"
+			alt="Limpiar"
+		/>
+	</button>
+</form>
 
 <!-- Mostrar categoría -->
 <main
 	class="category_detail-main"
-	style="background-image: {{ object.bg_color}}"
+	style="background-image: {{ object.bg_color }}"
 >
 	<div class="h1-container">
 		<h1>{{ object.name|upper }}</h1>
 	</div>
 
-	<!-- Mostrar resultados de búsqueda -->
 	<section>
 		{% if anchors %} {% for anchor in anchors %}
 		<a href="{{ anchor.link }}" target="_blank">
@@ -42,5 +46,4 @@
 		{% endif %}
 	</section>
 </main>
-
 {% endblock %}

@@ -1,4 +1,3 @@
-<!-- Cargamos la ruta de estáticos -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
@@ -12,24 +11,52 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
 			rel="stylesheet"
 		/>
 	</head>
 	<body>
-		<!-- Body -->
+		<!-- Barra de Navegación -->
 		<nav>
-			<a href="{% url 'index' %}">
+			<a href="{% url 'categories' %}">
 				<img
 					src="{% static 'images/icons/anchor.png' %}"
 					alt="Inicio"
 				/>
-				Anchors</a
-			>
+				Anchors
+			</a>
+
+			<div class="nav-links">
+				{% if user.is_authenticated %}
+				<span>Bienvenido, {{ user.username }}</span>
+
+				<!-- Enlace al panel de administración -->
+				{% if user.is_staff %}
+				<a href="/admin/">Panel de administración</a>
+				{% endif %}
+
+				<!-- Botón de logout -->
+				<form
+					method="POST"
+					action="{% url 'logout' %}"
+					style="display: inline"
+				>
+					{% csrf_token %}
+					<button type="submit">Cerrar sesión</button>
+				</form>
+				{% else %}
+				<!-- Botón de login -->
+				<a href="{% url 'login' %}">Iniciar sesión</a>
+				<a href="{% url 'register' %}">Registrarse</a>
+				{% endif %}
+			</div>
 		</nav>
+
 		<!-- Contenido de la página -->
-		{% block content %}
-		<p>Contenido de la página</p>
-		{% endblock %}
+		<main>
+			{% block content %}
+			<p>Contenido de la página</p>
+			{% endblock %}
+		</main>
 	</body>
 </html>

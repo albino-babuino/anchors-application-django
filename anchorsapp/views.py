@@ -1,15 +1,21 @@
 import datetime
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, View
 
 from .models import Category, Anchor
 from .forms import SearchAnchorForm
 
-class Index(LoginRequiredMixin, ListView):
-    template_name = 'anchorsapp/index.html'
+class HomePage(View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('index')  # Redirige a /categories si el usuario está autenticado
+        return render(request, 'anchorsapp/home.html')
+    
+class Categories(LoginRequiredMixin, ListView):
+    template_name = 'anchorsapp/categories.html'
     context_object_name = 'category_object_list'
 
     def get_queryset(self):
@@ -48,9 +54,6 @@ class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = 'anchorsapp/register.html'
     success_url = reverse_lazy('login')
-
-
-
 
 
 
