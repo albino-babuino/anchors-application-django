@@ -6,29 +6,36 @@
 
 <!-- Contenido de la página de categorías -->
 {% block content %}
+<main>
+	<!-- checkbox de edición -->
+	{% include "toggle_switch.html" %}
 
-<!-- checkbox de edición -->
-{% include "toggle_btn.html" %}
-
-<main class="index-main">
-	{% if category_object_list %} {% for category in category_object_list %}
-	<a href="{% url 'category_detail' category.pk %}">
-		<div>
-			<img src="{{ category.image.url }}" alt="{{ category.name }}" />
-			<h2>{{ category.name }}</h2>
-		</div>
-	</a>
-	<!-- Enlace para eliminar la categoría -->
-	<a href="{% url 'delete_category' category.pk %}" class="delete-btn">X</a>
-	<!-- Enlace para actualizar la categoría -->
-	<a href="{% url 'update_category' category.pk %}" class="update-btn">Ed</a>
-	{% endfor %} {% else %}
-	<p>No hay categorías disponibles</p>
-	{% endif %}
-	<!-- Enlace para crear categoría si el usuario está autenticado -->
-	{% if user.is_authenticated %}
-	<a href="{% url 'create_category' %}" class="create-btn">Crear Categoría</a>
-	{% endif %}
+	<section>
+		{% if category_object_list %} {% for category in category_object_list %}
+		<a href="{% url 'category_detail' category.pk %}">
+			<div>
+				<img src="{{ category.image.url }}" alt="{{ category.name }}" />
+				<h2>{{ category.name }}</h2>
+			</div>
+		</a>
+		<!-- Enlace para eliminar la categoría -->
+		<a href="{% url 'delete_category' category.pk %}" class="delete-btn"
+			>X</a
+		>
+		<!-- Enlace para actualizar la categoría -->
+		<a href="{% url 'update_category' category.pk %}" class="update-btn"
+			>Ed</a
+		>
+		{% endfor %} {% else %}
+		<p>No hay categorías disponibles</p>
+		{% endif %}
+		<!-- Enlace para crear categoría si el usuario está autenticado -->
+		{% if user.is_authenticated %}
+		<a href="{% url 'create_category' %}" class="create-btn"
+			>Crear Categoría</a
+		>
+		{% endif %}
+	</section>
 </main>
 
 {% endblock %}

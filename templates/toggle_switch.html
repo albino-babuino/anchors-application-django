@@ -1,0 +1,15 @@
+<!-- Checkbox para mostrar/ocultar botones de editar y eliminar -->
+{% load static %}
+<!-- Estilos específicos -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/toggle_switch.css' %}" />
+{% endblock %}
+<!-- Contenido -->
+<div id="toggle-checkbox-container">
+	<img src="{% static 'images/icons/edit.png' %}" class="edit-icon" />
+	<input type="checkbox" id="toggle-checkbox" class="toggle-edit-delete" />
+	<label for="toggle-checkbox"></lable>
+</div>
+
+<!-- Incluir el archivo JavaScript -->
+<script src="{% static 'js/toggleButtons.js' %}" defer></script>

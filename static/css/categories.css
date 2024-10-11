@@ -1,5 +1,5 @@
 /** Estilos para el index.html */
-.index-main {
+main section {
     margin: 5vh 5vw;
     display: flex;
     flex-direction: row;
@@ -8,13 +8,13 @@
     align-items: center;
     height: 70vh;
 }
-.index-main img {
+main section img {
     width: 125px;
     height: 125px;
     border-radius: 10px;
 }
 
-.index-main a {
+main section a {
     margin: 10px;
     text-align: center;
     font-size: 0.75rem;
@@ -22,7 +22,7 @@
     transition: transform 0.5s;
 }
 
-.index-main a:hover {
+main section a:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
 }
