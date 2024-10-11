@@ -1,50 +1,46 @@
-<!-- Plantilla base -->  
-{% extends "base/base.html" %} 
-<!-- Cargamos la ruta de estáticos -->
-{% load static %}
-<!-- Contenido -->
-{% block content %}
+{% extends "base/base.html" %} {% load static %} {% block content %}
 
-<!-- Formulario de búsqueda -->
-<form method="GET" action="">
-	{{ form.as_p }}
-	<button class="submit-btn" type="submit"><img class="icon" src="{% static 'images/icons/search.png' %}" alt="Limpiar" /></button>
-	<!-- Botón de reset -->
-	<button
-		class="reset-btn"
-		type="submit"
-		name="reset"
-		value="reset"
-		id="resetButton"
-	>
-    <img class="icon" src="{% static 'images/icons/clear.png' %}" alt="Limpiar" />
-	</button>
-</form>
+<!-- Verificar si el usuario está autenticado -->
+{% if user.is_authenticated %}
+<div class="auth-buttons">
+	<p>Bienvenido, {{ user.username }}</p>
+	<form method="POST" action="{% url 'logout' %}">
+		{% csrf_token %}
+		<button type="submit">Cerrar sesión</button>
+	</form>
+</div>
+{% else %}
+<a href="{% url 'login' %}">Iniciar sesión</a>
+{% endif %}
 
 <!-- Mostrar categoría -->
+<main
+	class="category_detail-main"
+	style="background-image: {{ object.bg_color}}"
+>
+	<div class="h1-container">
+		<h1>{{ object.name|upper }}</h1>
+	</div>
 
-<main class="category_detail-main" style="background-image: {{ object.bg_color}}">
-
-		<div class="h1-container">
-			<h1>{{ object.name|upper }}</h1> <!--TODO: Valorar si poner esto en la parte derecha del nav -->
+	<!-- Mostrar resultados de búsqueda -->
+	<section>
+		{% if anchors %} {% for anchor in anchors %}
+		<a href="{{ anchor.link }}" target="_blank">
+			<div>
+				<img src="{{ anchor.image.url }}" alt="{{ anchor.name }}" />
+				<h2>{{ anchor.name }}</h2>
+			</div>
+		</a>
+		{% endfor %} {% else %}
+		<div class="not-found">
+			<img
+				src="{% static 'images/homer.png' %}"
+				alt="No se encontraron resultados"
+			/>
+			<p>¡Mosquis!</p>
 		</div>
-
-		<!-- Mostrar resultados de búsqueda -->
-		<section>
-			{% if anchors %} {% for anchor in anchors %}
-			<a href="{{ anchor.link }}" target="_blank">
-				<div>
-					<img src="{{ anchor.image.url }}" alt="{{ anchor.name }}" />
-					<h2>{{ anchor.name }}</h2>
-				</div>
-			</a>
-			{% endfor %} {% else %}
-            <div class="not-found">
-                <img src="{% static 'images/homer.png' %}" alt="No se encontraron resultados" />
-                <p>¡Mosquis!</p>
-            </div>
-			{% endif %}
-		</section>
-	</main>
-	{% endblock %}
+		{% endif %}
+	</section>
 </main>
+
+{% endblock %}

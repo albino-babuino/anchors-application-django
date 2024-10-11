@@ -1,20 +1,30 @@
-{% extends "base/base.html" %}
-<!-- Cargamos la ruta de estáticos -->
-{% load static %}
-<!-- Body -->
-{% block content %}
+{% extends "base/base.html" %} {% load static %} {% block content %}
+
+<!-- Verificar si el usuario está autenticado -->
+{% if user.is_authenticated %}
+<div class="auth-buttons">
+	<p>Bienvenido, {{ user.username }}</p>
+	<form method="POST" action="{% url 'logout' %}">
+		{% csrf_token %}
+		<button type="submit">Cerrar sesión</button>
+	</form>
+</div>
+{% else %}
+<a href="{% url 'login' %}">Iniciar sesión</a>
+{% endif %}
 
 <!-- Mostrar categorías -->
 <main class="index-main">
 	{% if category_object_list %} {% for category in category_object_list %}
-	<a href="{% url 'category_detail' category.pk%}"
-		><div>
+	<a href="{% url 'category_detail' category.pk %}">
+		<div>
 			<img src="{{ category.image.url }}" alt="{{ category.name }}" />
 			<h2>{{ category.name }}</h2>
-		</div></a
-	>
+		</div>
+	</a>
 	{% endfor %} {% else %}
 	<p>No hay categorías disponibles</p>
 	{% endif %}
 </main>
+
 {% endblock %}
