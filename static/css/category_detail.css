@@ -1,5 +1,26 @@
 
 /* Estilos para el category_detail.html */
+.create-btn{
+    display: inline-block;
+    background: rgba( 255, 255, 255, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 30px 5vw;
+}
+
+.create-btn:hover{
+    background: rgba( 255, 255, 255, 0.25 );
+}
+
 form {
     display: flex;
     justify-content: center;
@@ -69,7 +90,7 @@ form .icon{
 }
 
 .category_detail-main {
-    min-height: 85vh;
+    min-height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -97,7 +118,11 @@ form .icon{
 
 .h1-container h1{
     font-size: 12rem;
-}   
+} 
+
+main a{
+    color: white;
+}
 
 section {
     padding-top: 10vh;
@@ -106,6 +131,7 @@ section {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+
 section img {
     width: 90px;
     height: 90px;

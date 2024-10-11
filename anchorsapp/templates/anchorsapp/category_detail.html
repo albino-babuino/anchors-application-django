@@ -8,6 +8,8 @@
 
 <!-- Contenido de la página de detalle de categoría -->
 {% block content %}
+<!-- Enlace para crear un enlace -->
+<a href="{% url 'create_anchor' %}" class="create-btn">+</a>
 <!-- checkbox de edición -->
 {% include "toggle_switch.html" %}
 
@@ -45,10 +47,6 @@
 		</div>
 		{% endif %}
 	</section>
-	<!-- Enlace para crear un nuevo enlace si el usuario está autenticado -->
-	{% if user.is_authenticated %}
-	<a href="{% url 'create_anchor' %}" class="create-btn">Crear Enlace</a>
-	{% endif %}
 </main>
 
 {% endblock %}
