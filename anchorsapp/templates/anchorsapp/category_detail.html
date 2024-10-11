@@ -1,28 +1,18 @@
-{% extends "base/base.html" %} {% load static %} {% block content %}
-<!-- Formulario de búsqueda -->
-<form method="GET" action="">
-	{{ form.as_p }}
-	<button class="submit-btn" type="submit">
-		<img
-			class="icon"
-			src="{% static 'images/icons/search.png' %}"
-			alt="Buscar"
-		/>
-	</button>
-	<button class="reset-btn" type="submit" name="reset" value="reset">
-		<img
-			class="icon"
-			src="{% static 'images/icons/clear.png' %}"
-			alt="Limpiar"
-		/>
-	</button>
-</form>
+{% extends "base/base.html" %}
+<!-- Cargar estáticos -->
+{% load static %}
+<!-- Estilos específicos -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/category_detail.css' %}" />
+{% endblock %}
 
-<!-- Checkbox para mostrar/ocultar botones de editar y eliminar -->
-<label>
-	<input type="checkbox" class="toggle-edit-delete" /> Mostrar/Ocultar
-	Editar/Eliminar
-</label>
+<!-- Contenido de la página de detalle de categoría -->
+{% block content %}
+<!-- checkbox de edición -->
+{% include "toggle_btn.html" %}
+
+<!-- Formulario de búsqueda -->
+{% include "search_form.html" %}
 
 <!-- Mostrar categoría -->
 <main
@@ -60,8 +50,5 @@
 	<a href="{% url 'create_anchor' %}" class="create-btn">Crear Enlace</a>
 	{% endif %}
 </main>
-
-<!-- Incluir el archivo JavaScript -->
-<script src="{% static 'js/toggleButtons.js' %}"></script>
 
 {% endblock %}

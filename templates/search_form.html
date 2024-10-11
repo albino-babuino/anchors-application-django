@@ -1,0 +1,19 @@
+{% load static %}
+<!-- Formulario de búsqueda -->
+<form method="GET" action="">
+	{{ form.as_p }}
+	<button class="submit-btn" type="submit">
+		<img
+			class="icon"
+			src="{% static 'images/icons/search.png' %}"
+			alt="Buscar"
+		/>
+	</button>
+	<button class="reset-btn" type="submit" name="reset" value="reset">
+		<img
+			class="icon"
+			src="{% static 'images/icons/clear.png' %}"
+			alt="Limpiar"
+		/>
+	</button>
+</form>

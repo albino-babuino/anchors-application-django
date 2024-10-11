@@ -1,10 +1,15 @@
-{% extends "base/base.html" %} {% load static %} {% block content %}
+{% extends "base/base.html" %} {% load static %}
+<!-- Estilos específicos -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/categories.css' %}" />
+{% endblock %}
+
 <!-- Contenido de la página de categorías -->
-<!-- Checkbox para mostrar/ocultar botones de editar y eliminar -->
-<label>
-	<input type="checkbox" class="toggle-edit-delete" /> Mostrar/Ocultar
-	Editar/Eliminar
-</label>
+{% block content %}
+
+<!-- checkbox de edición -->
+{% include "toggle_btn.html" %}
+
 <main class="index-main">
 	{% if category_object_list %} {% for category in category_object_list %}
 	<a href="{% url 'category_detail' category.pk %}">
@@ -25,8 +30,5 @@
 	<a href="{% url 'create_category' %}" class="create-btn">Crear Categoría</a>
 	{% endif %}
 </main>
-
-<!-- Incluir el archivo JavaScript -->
-<script src="{% static 'js/toggleButtons.js' %}"></script>
 
 {% endblock %}

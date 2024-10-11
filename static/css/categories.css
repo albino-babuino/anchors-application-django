@@ -1,0 +1,28 @@
+/** Estilos para el index.html */
+.index-main {
+    margin: 5vh 5vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+.index-main img {
+    width: 125px;
+    height: 125px;
+    border-radius: 10px;
+}
+
+.index-main a {
+    margin: 10px;
+    text-align: center;
+    font-size: 0.75rem;
+    transform: scale(1);
+    transition: transform 0.5s;
+}
+
+.index-main a:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
