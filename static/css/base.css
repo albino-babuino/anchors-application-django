@@ -1,10 +1,7 @@
 /** Estilos para base.html */
 
 body {
-    margin: 0;
-    padding: 0;
     color: white;
-    font-family: Arial, sans-serif;
     position: relative;
     background-image: linear-gradient(
         93.2deg,

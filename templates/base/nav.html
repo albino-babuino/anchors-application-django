@@ -6,19 +6,24 @@
 {% endblock %}
 <!-- Barra de Navegación -->
 <nav>
-	<a href="{% url 'categories' %}">
+	<a href="{% url 'categories' %}" class="logo">
 		<img src="{% static 'images/icons/anchor.png' %}" alt="Inicio" />
 		Anchors
 	</a>
 
 	<div class="nav-links">
 		{% if user.is_authenticated %}
-		<span>Bienvenido, {{ user.username }}</span>
+		<p>Bienvenido, <span>{{ user.username }}</span></p>
 
 		<!-- Botón de logout -->
-		<form method="POST" action="{% url 'logout' %}" style="display: inline">
+		<form method="POST" action="{% url 'logout' %}">
 			{% csrf_token %}
-			<button type="submit">Cerrar sesión</button>
+			<button type="submit">
+				<img
+					src="{% static 'images/icons/logout.png' %}"
+					alt="Cerrar sesión"
+				/>
+			</button>
 		</form>
 		{% else %}
 		<!-- Mostrar el enlace de login si el usuario no está autenticado -->

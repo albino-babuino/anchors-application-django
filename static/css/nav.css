@@ -5,22 +5,48 @@ nav {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.18);
-}
-nav a {
-    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-a {
+nav a {
     color: white;
     text-decoration: none;
-
     display: flex;
     align-items: center;
 }
 
+.logo{
+    font-size: 1.5rem;
+}
 
-
-nav a img{
+.logo img{
     height: 30px;
     margin-right: 10px;
 }
+
+.nav-links{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 20%;
+}
+
+.nav-links p span{
+    text-transform: capitalize;
+}
+
+.nav-links button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links button img{
+    height: 25px;
+}
+
+
