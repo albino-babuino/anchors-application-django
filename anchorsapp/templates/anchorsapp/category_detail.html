@@ -35,6 +35,10 @@
 				<h2>{{ anchor.name }}</h2>
 			</div>
 		</a>
+		<!-- Enlace para eliminar el enlace (anchor) -->
+		<a href="{% url 'delete_anchor' anchor.pk %}">X</a>
+		<!-- Enlace para actualizar el enlace (anchor) -->
+		<a href="{% url 'update_anchor' anchor.pk %}">Ed</a>
 		{% endfor %} {% else %}
 		<div class="not-found">
 			<img
@@ -45,5 +49,10 @@
 		</div>
 		{% endif %}
 	</section>
+	<!-- Enlace para crear un nuevo enlace si el usuario está autenticado -->
+	{% if user.is_authenticated %}
+	<a href="{% url 'create_anchor' %}" class="create-btn">Crear Enlace</a>
+	{% endif %}
 </main>
+
 {% endblock %}

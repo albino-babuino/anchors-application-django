@@ -17,6 +17,7 @@
 	</head>
 	<body>
 		<!-- Barra de Navegación -->
+		<!-- Barra de Navegación -->
 		<nav>
 			<a href="{% url 'categories' %}">
 				<img
@@ -30,7 +31,7 @@
 				{% if user.is_authenticated %}
 				<span>Bienvenido, {{ user.username }}</span>
 
-				<!-- Enlace al panel de administración -->
+				<!-- Enlace al panel de administración (solo si el usuario es staff) -->
 				{% if user.is_staff %}
 				<a href="/admin/">Panel de administración</a>
 				{% endif %}
@@ -45,9 +46,8 @@
 					<button type="submit">Cerrar sesión</button>
 				</form>
 				{% else %}
-				<!-- Botón de login -->
+				<!-- Mostrar el enlace de login si el usuario no está autenticado -->
 				<a href="{% url 'login' %}">Iniciar sesión</a>
-				<a href="{% url 'register' %}">Registrarse</a>
 				{% endif %}
 			</div>
 		</nav>
