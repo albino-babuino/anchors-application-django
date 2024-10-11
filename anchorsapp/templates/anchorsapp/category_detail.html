@@ -18,6 +18,12 @@
 	</button>
 </form>
 
+<!-- Checkbox para mostrar/ocultar botones de editar y eliminar -->
+<label>
+	<input type="checkbox" class="toggle-edit-delete" /> Mostrar/Ocultar
+	Editar/Eliminar
+</label>
+
 <!-- Mostrar categoría -->
 <main
 	class="category_detail-main"
@@ -36,9 +42,9 @@
 			</div>
 		</a>
 		<!-- Enlace para eliminar el enlace (anchor) -->
-		<a href="{% url 'delete_anchor' anchor.pk %}">X</a>
+		<a href="{% url 'delete_anchor' anchor.pk %}" class="delete-btn">X</a>
 		<!-- Enlace para actualizar el enlace (anchor) -->
-		<a href="{% url 'update_anchor' anchor.pk %}">Ed</a>
+		<a href="{% url 'update_anchor' anchor.pk %}" class="update-btn">Ed</a>
 		{% endfor %} {% else %}
 		<div class="not-found">
 			<img
@@ -54,5 +60,8 @@
 	<a href="{% url 'create_anchor' %}" class="create-btn">Crear Enlace</a>
 	{% endif %}
 </main>
+
+<!-- Incluir el archivo JavaScript -->
+<script src="{% static 'js/toggleButtons.js' %}"></script>
 
 {% endblock %}
