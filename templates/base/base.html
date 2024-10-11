@@ -12,48 +12,20 @@
 			href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
 			rel="stylesheet"
 		/>
-		<!-- Estilos -->
+		<!-- Estilos Base -->
+		<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
 		<link rel="stylesheet" href="{% static 'css/base.css' %}" />
-		{% block styles %}
-		<!-- Estilos específicos de la página -->
-		{% endblock %}
+		<!-- Estilos específicos de cada página -->
+		{% block styles %} {% endblock %}
 	</head>
 	<body>
 		<!-- Barra de Navegación -->
-		<!-- Barra de Navegación -->
-		<nav>
-			<a href="{% url 'categories' %}">
-				<img
-					src="{% static 'images/icons/anchor.png' %}"
-					alt="Inicio"
-				/>
-				Anchors
-			</a>
+		{% include "base/nav.html" %}
 
-			<div class="nav-links">
-				{% if user.is_authenticated %}
-				<span>Bienvenido, {{ user.username }}</span>
-
-				<!-- Botón de logout -->
-				<form
-					method="POST"
-					action="{% url 'logout' %}"
-					style="display: inline"
-				>
-					{% csrf_token %}
-					<button type="submit">Cerrar sesión</button>
-				</form>
-				{% else %}
-				<!-- Mostrar el enlace de login si el usuario no está autenticado -->
-				<a href="{% url 'login' %}">Iniciar sesión</a>
-				{% endif %}
-			</div>
-		</nav>
-
-		<!-- Contenido de la página -->
+		<!-- Bloque de contenido de la página -->
 		<main>
 			{% block content %}
-			<p>Contenido de la página</p>
+			<!-- Contenido de la página -->
 			{% endblock %}
 		</main>
 	</body>
