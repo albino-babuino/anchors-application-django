@@ -7,6 +7,8 @@
 <!-- Contenido de la página de categorías -->
 {% block content %}
 <main>
+	<!-- Enlace para crear categoría si el usuario está autenticado -->
+	<a href="{% url 'create_category' %}" class="create-btn">+</a>
 	<!-- checkbox de edición -->
 	{% include "toggle_switch.html" %}
 
@@ -28,12 +30,6 @@
 		>
 		{% endfor %} {% else %}
 		<p>No hay categorías disponibles</p>
-		{% endif %}
-		<!-- Enlace para crear categoría si el usuario está autenticado -->
-		{% if user.is_authenticated %}
-		<a href="{% url 'create_category' %}" class="create-btn"
-			>Crear Categoría</a
-		>
 		{% endif %}
 	</section>
 </main>
