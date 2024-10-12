@@ -14,20 +14,25 @@
 
 	<section>
 		{% if category_object_list %} {% for category in category_object_list %}
-		<a href="{% url 'category_detail' category.pk %}">
-			<div>
-				<img src="{{ category.image.url }}" alt="{{ category.name }}" />
-				<h2>{{ category.name }}</h2>
-			</div>
-		</a>
-		<!-- Enlace para eliminar la categoría -->
-		<a href="{% url 'delete_category' category.pk %}" class="delete-btn"
-			>X</a
-		>
-		<!-- Enlace para actualizar la categoría -->
-		<a href="{% url 'update_category' category.pk %}" class="update-btn"
-			>Ed</a
-		>
+		<div class="category">
+			<a href="{% url 'category_detail' category.pk %}">
+				<div>
+					<img
+						src="{{ category.image.url }}"
+						alt="{{ category.name }}"
+					/>
+					<h2>{{ category.name }}</h2>
+				</div>
+			</a>
+			<!-- Enlace para eliminar la categoría -->
+			<a href="{% url 'delete_category' category.pk %}" class="delete-btn"
+				>X</a
+			>
+			<!-- Enlace para actualizar la categoría -->
+			<a href="{% url 'update_category' category.pk %}" class="update-btn"
+				>Ed</a
+			>
+		</div>
 		{% endfor %} {% else %}
 		<p>No hay categorías disponibles</p>
 		{% endif %}
