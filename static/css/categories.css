@@ -1,8 +1,3 @@
-/** Estilos para el index.html */
-main{
-    /* min-height: 100vh; */
-}
-
 .categories-btn-container{
     display: flex;
     flex-direction: row;
@@ -25,6 +20,7 @@ main{
     border-radius: 50%;
     font-size: 1.5rem;
     text-align: center;
+
 }
 
 .create-btn:hover{
