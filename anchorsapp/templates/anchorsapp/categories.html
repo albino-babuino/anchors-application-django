@@ -7,10 +7,12 @@
 <!-- Contenido de la página de categorías -->
 {% block content %}
 <main>
-	<!-- Enlace para crear categoría si el usuario está autenticado -->
-	<a href="{% url 'create_category' %}" class="create-btn">+</a>
-	<!-- checkbox de edición -->
-	{% include "toggle_switch.html" %}
+	<div class="categories-btn-container">
+		<!-- Enlace para crear categoría si el usuario está autenticado -->
+		<a href="{% url 'create_category' %}" class="create-btn">+</a>
+		<!-- checkbox de edición -->
+		{% include "toggle_switch.html" %}
+	</div>
 
 	<section>
 		{% if category_object_list %} {% for category in category_object_list %}

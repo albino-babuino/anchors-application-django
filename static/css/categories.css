@@ -1,10 +1,18 @@
 /** Estilos para el index.html */
 main{
-    min-height: 100vh;
+    /* min-height: 100vh; */
+}
+
+.categories-btn-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    margin-top: 10px;
 }
 
 .create-btn{
-    display: inline-block;
     background: rgba( 255, 255, 255, 0.5 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
@@ -17,7 +25,6 @@ main{
     border-radius: 50%;
     font-size: 1.5rem;
     text-align: center;
-    margin: 30px 5vw;
 }
 
 .create-btn:hover{

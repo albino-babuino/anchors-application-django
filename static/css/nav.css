@@ -28,21 +28,28 @@ nav a {
 
 .nav-links{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    min-width: 20%;
+}
+
+.nav-links p{
+    margin: 0 20px;
+    font-size: 1.2rem;
 }
 
 .nav-links p span{
     text-transform: capitalize;
 }
 
+.nav-links form{
+    margin: 0;
+}
+
 .nav-links button{
     background: none;
     border: none;
     cursor: pointer;
-    display: flex;
-    align-items: center;
 }
 
 .nav-links button img{
