@@ -7,7 +7,7 @@ class Category(models.Model):
     image = models.ImageField(upload_to='category', verbose_name='Imagen')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
-    bg_color = models.CharField(max_length=150, default='#1461f6', verbose_name='Color de fondo')
+    bg_color = models.CharField(max_length=150, default='#0d1117', verbose_name='Color de fondo')
 
     class Meta:
         verbose_name = 'Categoría'
