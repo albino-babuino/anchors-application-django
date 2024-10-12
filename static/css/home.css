@@ -61,11 +61,16 @@ h3{
 .btn-register{
     background-color: none;
     border: 2px solid #6e40c9;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+    transition: box-shadow 0.5s;
+    transition: border box-shadow 0.5s;
 }
 
 .btn-register:hover{
     border: 2px solid white;
     box-shadow: 0 5px 20px 0px rgba(255, 255, 255, 0.3);
+    transition: box-shadow 0.3s;
+    transition: border 0.3s;
 }
 
 /* Media queries */
@@ -88,7 +93,6 @@ h3{
         margin: 0.5rem;
         display: block;
     }
-
 
     .button{
         width: 100%;
