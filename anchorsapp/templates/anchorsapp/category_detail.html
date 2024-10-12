@@ -10,7 +10,7 @@
 {% block content %}
 <div class="anchors-btn-container">
 	<!-- Enlace para crear un enlace -->
-	<a href="{% url 'create_anchor' %}" class="create-btn">+</a>
+	<a href="{% url 'create_anchor' object.pk %}" class="create-btn">+</a>
 
 	<div class="form-and-toggle-container">
 		<!-- Formulario de búsqueda -->
@@ -20,10 +20,10 @@
 	</div>
 </div>
 
-<!-- Mostrars categorías -->
+<!-- Mostrar enlaces (anchors) -->
 <main
 	class="category_detail-main"
-	style="background-image: {{ object.bg_color }}"
+	style="background-color: {{ object.bg_color }}"
 >
 	<div class="h1-container">
 		<h1>{{ object.name|upper }}</h1>
@@ -38,14 +38,19 @@
 					<h2>{{ anchor.name }}</h2>
 				</div>
 			</a>
-			<!-- Enlace para eliminar el enlace (anchor) -->
+
+			{% if anchor.user == user %}
+			<!-- Mostrar opciones de edición solo si el usuario autenticado es el propietario del enlace -->
 			<a href="{% url 'delete_anchor' anchor.pk %}" class="delete-btn"
 				>X</a
 			>
-			<!-- Enlace para actualizar el enlace (anchor) -->
-			<a href="{% url 'update_anchor' anchor.pk %}" class="update-btn"
-				><img src="{% static 'images/icons/edit.png' %}"
-			/></a>
+			<a href="{% url 'update_anchor' anchor.pk %}" class="update-btn">
+				<img
+					src="{% static 'images/icons/edit.png' %}"
+					alt="Editar enlace"
+				/>
+			</a>
+			{% endif %}
 		</div>
 		{% endfor %} {% else %}
 		<div id="not-found">

@@ -1,8 +1,20 @@
-{% extends "base/base.html" %} {% block content %}
+{% extends "base/base.html" %} {% load static %}
+<!-- Estilos específicos -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/delete_anchor.css' %}" />
+{% endblock %} {% block content %}
 <h2>¿Estás seguro de que deseas eliminar el enlace "{{ object.name }}"?</h2>
+
+{% if user.is_authenticated %}
 <form method="POST">
 	{% csrf_token %}
 	<button type="submit">Eliminar</button>
 	<a href="{% url 'categories' %}">Cancelar</a>
 </form>
-{% endblock %}
+{% else %}
+<p>
+	Debes estar <a href="{% url 'login' %}">iniciado sesión</a> para eliminar un
+	enlace.
+</p>
+<a href="{% url 'categories' %}">Volver a la lista de categorías</a>
+{% endif %} {% endblock %}

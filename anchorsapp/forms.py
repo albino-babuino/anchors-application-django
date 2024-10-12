@@ -14,4 +14,4 @@ class CategoryForm(forms.ModelForm):
 class AnchorForm(forms.ModelForm):
     class Meta:
         model = Anchor
-        fields = ['name', 'link', 'image', 'category']  # Campos del formulario
+        fields = ['name', 'link', 'image']  # Excluir 'category' de los campos del formulario

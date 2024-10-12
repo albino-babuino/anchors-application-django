@@ -104,6 +104,10 @@ form .icon{
     height: 1.2rem;
 }
 
+section{
+    padding: 150px 5vw ;
+}
+
 .category_detail-main {
     min-height: 100vh;
     position: absolute;
@@ -111,9 +115,6 @@ form .icon{
     left: 0;
     right: 0;
     z-index: -10;
-    padding-top: 15vh;
-    padding-left: 20vw;
-    padding-right: 20vw;
 }
 
 .h1-container{
@@ -144,8 +145,8 @@ main section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     height: 70vh;
 }
 

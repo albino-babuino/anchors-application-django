@@ -1,8 +1,15 @@
-{% extends "base/base.html" %} {% block content %}
+{% extends "base/base.html" %} {% load static %}
+<!-- Estilos específicos -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/update_anchor.css' %}" />
+{% endblock %} {% block content %}
 <h2>Actualizar Enlace</h2>
 <form method="POST" enctype="multipart/form-data">
 	{% csrf_token %} {{ form.as_p }}
 	<button type="submit">Guardar Cambios</button>
 	<a href="{% url 'categories' %}">Cancelar</a>
 </form>
+<a href="{% url 'category_detail' object.category.pk %}"
+	>Volver a la categoría</a
+>
 {% endblock %}

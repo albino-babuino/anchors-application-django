@@ -1,9 +1,21 @@
-{% extends "base/base.html" %} {% block content %}
+{% extends "base/base.html" %} {% load static %}
+<!-- Estilos específicos -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/create_category.css' %}" />
+{% endblock %} {% block content %}
 <h2>Crear Nueva Categoría</h2>
+
+<!-- Verificar si el usuario está autenticado antes de permitir crear una categoría -->
+{% if user.is_authenticated %}
 <form method="POST" enctype="multipart/form-data">
 	{% csrf_token %} {{ form.as_p }}
 	<!-- Renderiza el formulario -->
 	<button type="submit">Crear Categoría</button>
 </form>
 <a href="{% url 'categories' %}">Volver a la lista de categorías</a>
-{% endblock %}
+{% else %}
+<p>
+	Debes estar <a href="{% url 'login' %}">iniciado sesión</a> para crear una
+	categoría.
+</p>
+{% endif %} {% endblock %}

@@ -1,4 +1,8 @@
-{% extends "base/base.html" %} {% load static %} {% block content %}
+{% extends "base/base.html" %} {% load static %}
+<!-- Estilos específicos -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %} {% block content %}
 <main class="home-main">
 	<h1>Bienvenido a AnchorApp</h1>
 
@@ -8,7 +12,8 @@
 	<a href="{% url 'register' %}" class="button">Registrarse</a>
 	{% else %}
 	<p>¡Ya estás autenticado como {{ user.username }}!</p>
-	<a href="{% url 'index' %}" class="button">Ir a tus categorías</a>
+	<a href="{% url 'categories' %}" class="button">Ir a tus categorías</a>
+	<a href="{% url 'logout' %}" class="button">Cerrar sesión</a>
 	{% endif %}
 </main>
 {% endblock %}

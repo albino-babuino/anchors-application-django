@@ -1,9 +1,9 @@
 {% extends "base/base.html" %} {% block content %}
-<h2>Crear Nuevo Enlace</h2>
+<h2>Crear Nuevo Enlace en la Categoría "{{ category.name }}"</h2>
 <form method="POST" enctype="multipart/form-data">
 	{% csrf_token %} {{ form.as_p }}
 	<!-- Renderiza el formulario -->
 	<button type="submit">Crear Enlace</button>
 </form>
-<a href="{% url 'categories' %}">Volver a la lista de categorías</a>
+<a href="{% url 'category_detail' category.pk %}">Volver a la categoría</a>
 {% endblock %}

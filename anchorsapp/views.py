@@ -29,9 +29,9 @@ class CategoryDetail(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        category = self.object
+        category = self.object  # Obtiene la categoría actual
 
-        # Obtener solo los anchors del usuario
+        # Obtener solo los anchors del usuario autenticado
         search_query = self.request.GET.get('query', '')
         reset_search = self.request.GET.get('reset', '')
 
@@ -55,41 +55,88 @@ class RegisterView(CreateView):
     template_name = 'anchorsapp/register.html'
     success_url = reverse_lazy('login')
 
-class CreateCategory(CreateView):
+class CreateCategory(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CategoryForm
     template_name = 'anchorsapp/create_category.html'
-    success_url = '/categories/' 
+    success_url = '/categories/'
 
-class CreateAnchor(CreateView):
+    def form_valid(self, form):
+        form.instance.user = self.request.user  # Asignar el usuario autenticado
+        return super().form_valid(form)
+
+class CreateAnchor(LoginRequiredMixin, CreateView):
     model = Anchor
     form_class = AnchorForm
     template_name = 'anchorsapp/create_anchor.html'
-    success_url = '/categories/'  
+    # Se elimina la línea success_url, ya que se configurará en get_success_url
 
-    # Vista para eliminar una categoría
-class DeleteCategory(LoginRequiredMixin, DeleteView):
-    model = Category
-    template_name = 'anchorsapp/delete_category.html'
-    success_url = reverse_lazy('categories')  # Redirige a la lista de categorías después de eliminar
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category_id = self.kwargs.get('category_id')
+        # Verificar que la categoría pertenece al usuario autenticado
+        category = get_object_or_404(Category, pk=category_id, user=self.request.user)
+        context['category'] = category  # Agregar la categoría al contexto
+        return context
 
-# Vista para eliminar un enlace (anchor)
-class DeleteAnchor(LoginRequiredMixin, DeleteView):
-    model = Anchor
-    template_name = 'anchorsapp/delete_anchor.html'
-    success_url = reverse_lazy('categories')  # Redirige a la lista de categorías después de eliminar
+    def form_valid(self, form):
+        category_id = self.kwargs.get('category_id')
+        category = get_object_or_404(Category, pk=category_id, user=self.request.user)
+        form.instance.user = self.request.user  # Asignar el usuario logueado
+        form.instance.category = category  # Asignar la categoría
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        # Redirigir a la página de detalles de la categoría después de crear el enlace
+        return reverse_lazy('category_detail', args=[self.kwargs['category_id']])
 
 # Vista para actualizar una categoría
 class UpdateCategory(LoginRequiredMixin, UpdateView):
     model = Category
     form_class = CategoryForm
     template_name = 'anchorsapp/update_category.html'
-    success_url = reverse_lazy('categories')  # Redirige a la lista de categorías después de actualizar
+    success_url = reverse_lazy('categories')
+
+    def get_object(self, queryset=None):
+        # Asegurarse de que el usuario autenticado solo pueda actualizar sus categorías
+        return get_object_or_404(Category, pk=self.kwargs['pk'], user=self.request.user)
 
 # Vista para actualizar un enlace (anchor)
 class UpdateAnchor(LoginRequiredMixin, UpdateView):
     model = Anchor
     form_class = AnchorForm
     template_name = 'anchorsapp/update_anchor.html'
-    success_url = reverse_lazy('categories')  # Redirige a la lista de categorías después de actualizar
 
+    def get_object(self, queryset=None):
+        # Asegurarse de que el usuario autenticado solo pueda actualizar sus enlaces
+        return get_object_or_404(Anchor, pk=self.kwargs['pk'], user=self.request.user)
+
+    def get_success_url(self):
+        # Redirigir a la página de detalles de la categoría después de actualizar el enlace
+        category_id = self.object.category.id  # Obtener la categoría del anchor actualizado
+        return reverse_lazy('category_detail', args=[category_id])
+
+# Vista para eliminar una categoría
+class DeleteCategory(LoginRequiredMixin, DeleteView):
+    model = Category
+    template_name = 'anchorsapp/delete_category.html'
+    success_url = reverse_lazy('categories')
+
+    def get_object(self, queryset=None):
+        # Asegurarse de que el usuario autenticado solo pueda eliminar sus categorías
+        return get_object_or_404(Category, pk=self.kwargs['pk'], user=self.request.user)
+
+# Vista para eliminar un enlace (anchor)
+class DeleteAnchor(LoginRequiredMixin, DeleteView):
+    model = Anchor
+    template_name = 'anchorsapp/delete_anchor.html'
+
+    def get_object(self, queryset=None):
+        # Asegurarse de que el usuario autenticado solo pueda eliminar sus propios enlaces
+        return get_object_or_404(Anchor, pk=self.kwargs['pk'], user=self.request.user)
+
+    def get_success_url(self):
+        # Redirigir a la página de detalles de la categoría después de eliminar el enlace
+        category_id = self.object.category.id  # Obtener la categoría del anchor eliminado
+        return reverse_lazy('category_detail', args=[category_id])
+    

@@ -26,19 +26,26 @@
 					<h2>{{ category.name }}</h2>
 				</div>
 			</a>
-			<!-- Enlace para eliminar la categoría -->
+
+			{% if category.user == user %}
+			<!-- Mostrar opciones de edición solo si el usuario autenticado es el propietario -->
 			<a href="{% url 'delete_category' category.pk %}" class="delete-btn"
 				>x</a
 			>
-			<!-- Enlace para actualizar la categoría -->
-			<a href="{% url 'update_category' category.pk %}" class="update-btn"
-				><img src="{% static 'images/icons/edit.png' %}"
-			/></a>
+			<a
+				href="{% url 'update_category' category.pk %}"
+				class="update-btn"
+			>
+				<img
+					src="{% static 'images/icons/edit.png' %}"
+					alt="Editar categoría"
+				/>
+			</a>
+			{% endif %}
 		</div>
 		{% endfor %} {% else %}
-		<p>No hay categorías disponibles</p>
+		<p>¡Crea una categoría!</p>
 		{% endif %}
 	</section>
 </main>
-
 {% endblock %}
