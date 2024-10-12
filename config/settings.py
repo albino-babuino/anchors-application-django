@@ -132,5 +132,5 @@ MEDIA_ROOT = BASE_DIR / 'media' #? Ubicación de los archivos multimedia
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login'  #? Redirige a la vista de login si el usuario no está autenticado
-LOGIN_REDIRECT_URL = 'index'  #? Redirige a la vista principal después de iniciar sesión
+LOGIN_REDIRECT_URL = '/categories/'  #? Redirige a la vista principal después de iniciar sesión
 LOGOUT_REDIRECT_URL = '/categories/'  #? Redirige a la página de login después de cerrar sesión
