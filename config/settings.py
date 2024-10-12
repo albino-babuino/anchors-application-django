@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'anchorsapp', #? app anchorsapp
+    'livereload', #? app livereload para recargar la página automáticamente en desarrollo (se ejecuta con el comando python manage.py livereload en una terminal y en la otra python manage.py runserver)
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'livereload.middleware.LiveReloadScript', #? Middleware para recargar la página automáticamente en desarrollo
 ]
 
 ROOT_URLCONF = 'config.urls'
