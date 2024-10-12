@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('anchorsapp.urls')), #? Agregar la ruta de la app anchorsapp
+    path('', include('user_auth.urls')), #? Agregar la ruta de la app user_auth
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #? Para que se muestren los archivos multimedia (imágenes, vídeos...) en el navegador
