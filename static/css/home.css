@@ -1,41 +1,96 @@
 main{
-    min-height: calc(100vh - 75px);
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
 }
 
-h2{
-    font-size: 2.5rem;
+.home-titles{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 70vw;
+}
+
+h1{
+    font-size: clamp(3rem, 12vw, 7rem);
+    color: #f0f6fc;
+    text-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    text-align: left;
     margin-bottom: 1rem;
 }
 
-.button{
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    font-size: 1.5rem;
-    text-decoration: none;
+h3{
+    font-size: clamp(1.25rem, 1.5vw, 3rem);
+    color: #f0f6fc;
+    text-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+    font-weight: 400;
+    text-align: left;
 }
 
-.button:hover{
-    background-color: #0056b3;
+.home-butons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.button{
+    padding: 1rem 4rem;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    text-align: center;
 }
 
 .btn-login{
-    background-color: #28a745;
+    background-color: #6e40c9;
+    box-shadow: 0 0 0 0 #6e40c9;
+    transition: box-shadow 0.5s;
 }
 
 .btn-login:hover{
-    background-color: #218838;
+    box-shadow: 0 10px 30px 5px #6e40c9;
+    transition: box-shadow 0.3s;
 }
 
 .btn-register{
-    background-color: #ffc107;
+    background-color: none;
+    border: 2px solid #6e40c9;
 }
 
 .btn-register:hover{
-    background-color: #d39e00;
+    border: 2px solid white;
+    box-shadow: 0 5px 20px 0px rgba(255, 255, 255, 0.3);
+}
+
+/* Media queries */
+@media screen and (max-width: 500px){
+    .home-titles{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        max-width: 90vw;
+    }
+
+    .home-buttons{
+        flex-direction: column;
+        width: 90vw;
+    }
+    
+    .button{
+        margin: 0.5rem;
+        display: block;
+    }
+
+
+    .button{
+        width: 100%;
+    }
 }
