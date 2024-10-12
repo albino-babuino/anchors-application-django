@@ -1,15 +1,7 @@
 #toggle-checkbox-container{
-    /* background-color: greenyellow; */
-    position: absolute;
-    top: 100px;
-    right: 5vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.edit-icon{
-    height: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 input[type=checkbox]{
@@ -21,21 +13,21 @@ input[type=checkbox]{
 label {
 	cursor: pointer;
 	text-indent: -9999px;
-	width: 50px;
-	height: 30px;
+	width: 45px;
+	height: 25px;
 	background: rgba(255, 255, 255, 0.5);
 	display: block;
-	border-radius: 25px;
+	border-radius: 20px;
 	position: relative;
 }
 
 label:after {
 	content: '';
 	position: absolute;
-	top: 1.25px;
-	left: 1.25px;
-	width: 27.5px;
-	height: 27.5px;
+	top: 1.5px;
+	left: 1.5px;
+	width: 22px;
+	height: 22px;
 	background: #fff;
 	border-radius: 45px;
 	transition: 0.3s;

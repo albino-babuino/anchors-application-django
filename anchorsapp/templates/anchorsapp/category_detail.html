@@ -8,15 +8,19 @@
 
 <!-- Contenido de la página de detalle de categoría -->
 {% block content %}
-<!-- Enlace para crear un enlace -->
-<a href="{% url 'create_anchor' %}" class="create-btn">+</a>
-<!-- checkbox de edición -->
-{% include "toggle_switch.html" %}
+<div class="anchors-btn-container">
+	<!-- Enlace para crear un enlace -->
+	<a href="{% url 'create_anchor' %}" class="create-btn">+</a>
 
-<!-- Formulario de búsqueda -->
-{% include "search_form.html" %}
+	<div class="form-and-toggle-container">
+		<!-- Formulario de búsqueda -->
+		{% include "search_form.html" %}
+		<!-- checkbox de edición -->
+		{% include "toggle_switch.html" %}
+	</div>
+</div>
 
-<!-- Mostrar categoría -->
+<!-- Mostrars categorías -->
 <main
 	class="category_detail-main"
 	style="background-image: {{ object.bg_color }}"
@@ -27,18 +31,24 @@
 
 	<section>
 		{% if anchors %} {% for anchor in anchors %}
-		<a href="{{ anchor.link }}" target="_blank">
-			<div>
-				<img src="{{ anchor.image.url }}" alt="{{ anchor.name }}" />
-				<h2>{{ anchor.name }}</h2>
-			</div>
-		</a>
-		<!-- Enlace para eliminar el enlace (anchor) -->
-		<a href="{% url 'delete_anchor' anchor.pk %}" class="delete-btn">X</a>
-		<!-- Enlace para actualizar el enlace (anchor) -->
-		<a href="{% url 'update_anchor' anchor.pk %}" class="update-btn">Ed</a>
+		<div class="anchor">
+			<a href="{{ anchor.link }}" target="_blank">
+				<div>
+					<img src="{{ anchor.image.url }}" alt="{{ anchor.name }}" />
+					<h2>{{ anchor.name }}</h2>
+				</div>
+			</a>
+			<!-- Enlace para eliminar el enlace (anchor) -->
+			<a href="{% url 'delete_anchor' anchor.pk %}" class="delete-btn"
+				>X</a
+			>
+			<!-- Enlace para actualizar el enlace (anchor) -->
+			<a href="{% url 'update_anchor' anchor.pk %}" class="update-btn"
+				><img src="{% static 'images/icons/edit.png' %}"
+			/></a>
+		</div>
 		{% endfor %} {% else %}
-		<div class="not-found">
+		<div id="not-found">
 			<img
 				src="{% static 'images/homer.png' %}"
 				alt="No se encontraron resultados"
