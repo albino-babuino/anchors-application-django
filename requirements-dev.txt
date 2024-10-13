@@ -1,0 +1,1 @@
+django-livereload-server==0.5.1 #Este es de desarrollo habría que meterlo en requirements-dev.txt

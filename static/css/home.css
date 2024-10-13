@@ -45,7 +45,7 @@ h3{
     font-size: 1rem;
     text-decoration: none;
     text-align: center;
-    font-weight: 300;
+    font-weight: bold;
 }
 
 .btn-login{
@@ -72,6 +72,16 @@ h3{
     box-shadow: 0 5px 20px 0px rgba(255, 255, 255, 0.3);
     transition: box-shadow 0.3s;
     transition: border 0.3s;
+}
+
+#video-tutorial-link{
+    color: rgba(133, 255, 47, 0.9);
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+#video-tutorial-link:hover{
+    text-decoration: underline;
 }
 
 /* Media queries */
