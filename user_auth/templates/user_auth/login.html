@@ -1,13 +1,19 @@
 {% extends "base/base.html" %} {% load static %}
 <!-- Estilos específicos -->
 {% block styles %}
-<link rel="stylesheet" href="{% static 'css/login.css' %}" />
-{% endblock %} {% block content %}
-<h2>Iniciar sesión</h2>
-<form method="post">
-	{% csrf_token %} {{ form.as_p }}
-	<button type="submit">Login</button>
-</form>
-<a href="{% url 'register' %}">¿No tienes una cuenta? Regístrate aquí.</a>
-<a href="{% url 'home' %}">Volver a la página principal</a>
+<link rel="stylesheet" href="{% static 'css/forms.css' %}" />
 {% endblock %}
+<!-- Contenido -->
+{% block content %}
+<div class="form-page-container">
+	<h2>Iniciar sesión</h2>
+	<form method="post" class="form">
+		{% csrf_token %} {{ form.as_p }}
+		<button type="submit">Login</button>
+	</form>
+	<a href="{% url 'register' %}" class="register-btn"
+		>¿No tienes una cuenta? Regístrate aquí.</a
+	>
+	<a href="{% url 'home' %}" class="home-btn">Volver a la página principal</a>
+	{% endblock %}
+</div>

@@ -24,7 +24,7 @@ h1{
 
 h3{
     font-size: clamp(0.9rem, 2.5vw, 2rem);
-    color: #f0f6fc;
+    color: #b6bbc1;
     text-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
     font-weight: 200;
     text-align: left;
@@ -44,7 +44,6 @@ h3{
     color: white;
     font-size: 1rem;
     text-decoration: none;
-    margin: 0 0.5rem;
     text-align: center;
 }
 
