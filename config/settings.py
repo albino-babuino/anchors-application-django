@@ -140,7 +140,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static'] #? Ruta/s de la/s carpeta/s static
 STATIC_ROOT = BASE_DIR / 'staticfiles' #? Ruta de la carpeta staticfiles. Esto es para recolectar los estáticos para producción con el comando python manage.py collectstatic
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" #? Configuración para servir archivos estáticos en producción (necesario para el paquete whitenoise)
-MEDIA_URL = 'media/' #? Url pública del navegador para los archivos multimedia
+MEDIA_URL = '/media/' #? Url pública del navegador para los archivos multimedia
 MEDIA_ROOT = BASE_DIR / 'media' #? Ubicación de los archivos multimedia
 
 # Default primary key field type
