@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url #? Importación de la librería dj_database_url para la configuración de la base de datos en producción
+from dotenv import load_dotenv #? Importación de la librería dotenv para cargar las variables de entorno
+import os #? Importación de la librería os
+
+load_dotenv()  #? Carga de las variables de entorno (paquete dotenv)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,13 +29,12 @@ TEMPLATE_DIR = BASE_DIR / 'templates' #? Ruta de la carpeta templates
 SECRET_KEY = 'django-insecure-2)g((q_0abp!ra)9z=dt0*0)+v*1q+15d@3zuuvdc4bdjdzsfr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True #? En desarrollo
+DEBUG = False #? En producción
 
 # ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'web-production-4c67.up.railway.app'] #? Host de Railway de producción
-
 
 # Application definition
 
@@ -41,10 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic', #? app whitenoise para servir archivos estáticos en producción 
     'anchorsapp', #? app anchorsapp
     'user_auth', #? app user_auth
     'livereload', #? app livereload para recargar la página automáticamente en desarrollo (se ejecuta con el comando python manage.py livereload en una terminal y en la otra python manage.py runserver)
-    'whitenoise.runserver_nostatic', #? app whitenoise para servir archivos estáticos en producción 
 ]
 
 MIDDLEWARE = [
@@ -84,12 +88,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))  #? Configuración de la base de datos en producción
+    }
 
 
 # Password validation
