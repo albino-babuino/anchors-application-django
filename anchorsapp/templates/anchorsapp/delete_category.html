@@ -1,20 +1,26 @@
 {% extends "base/base.html" %} {% load static %}
 <!-- Estilos específicos -->
 {% block styles %}
-<link rel="stylesheet" href="{% static 'css/delete_category.css' %}" />
-{% endblock %} {% block content %}
-<h2>¿Estás seguro de que deseas eliminar la categoría "{{ object.name }}"?</h2>
+<link rel="stylesheet" href="{% static 'css/forms.css' %}" />
+{% endblock %}
+<!-- Contenido -->
+{% block content %}
+<div class="form-page-container">
+	<h2>
+		¿Estás seguro de que deseas eliminar la categoría "{{ object.name }}"?
+	</h2>
 
-{% if user.is_authenticated %}
-<form method="POST">
-	{% csrf_token %}
-	<button type="submit">Eliminar</button>
-	<a href="{% url 'categories' %}">Cancelar</a>
-</form>
-{% else %}
-<p>
-	Debes estar <a href="{% url 'login' %}">iniciado sesión</a> para eliminar
-	una categoría.
-</p>
-<a href="{% url 'categories' %}">Volver a la lista de categorías</a>
-{% endif %} {% endblock %}
+	{% if user.is_authenticated %}
+	<form method="POST" class="form">
+		{% csrf_token %}
+		<button type="submit" id="delete-btn">Eliminar</button>
+		<a href="{% url 'categories' %}" id="cancel-btn">Cancelar</a>
+	</form>
+	{% else %}
+	<p>
+		Debes estar <a href="{% url 'login' %}">iniciado sesión</a> para
+		eliminar una categoría.
+	</p>
+	<a href="{% url 'categories' %}">Volver a la lista de categorías</a>
+	{% endif %} {% endblock %}
+</div>
