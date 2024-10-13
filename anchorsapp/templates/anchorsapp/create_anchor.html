@@ -1,9 +1,17 @@
-{% extends "base/base.html" %} {% block content %}
-<h2>Crear Nuevo Enlace en la Categoría "{{ category.name }}"</h2>
-<form method="POST" enctype="multipart/form-data">
-	{% csrf_token %} {{ form.as_p }}
-	<!-- Renderiza el formulario -->
-	<button type="submit">Crear Enlace</button>
-</form>
-<a href="{% url 'category_detail' category.pk %}">Volver a la categoría</a>
+{% extends "base/base.html" %}{% load static %}
+<!-- Estilos específicos -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}" />
+{% endblock %}
+<!-- Contenido -->
+{% block content %}
+<div class="form-page-container">
+	<h2>Crear Nuevo Enlace de {{ category.name }}</h2>
+	<form method="POST" enctype="multipart/form-data" class="form">
+		{% csrf_token %} {{ form.as_p }}
+		<!-- Renderiza el formulario -->
+		<button type="submit">Crear Enlace</button>
+	</form>
+	<a href="{% url 'category_detail' category.pk %}">Volver a la categoría</a>
+</div>
 {% endblock %}

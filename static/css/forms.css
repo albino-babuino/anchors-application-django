@@ -66,6 +66,14 @@
     color: white;
 }
 
+.form input::file-selector-button{
+    border: none;
+    background-color: #d7d7d7;
+    padding: 0.25rem 0.75rem;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
 button{
     padding: 1rem 4rem;
     border-radius: 5px;
