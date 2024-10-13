@@ -1,0 +1,125 @@
+.categories-btn-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    margin-top: 10px;
+}
+
+.create-btn{
+    background: rgba( 255, 255, 255, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+
+}
+
+.create-btn:hover{
+    background: rgba( 255, 255, 255, 0.25 );
+}
+
+main a{
+    color: rgb(225, 225, 225);
+}
+
+main section {
+    margin: 0 5vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.category{
+    margin: 10px;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+}
+
+.category:hover{
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+
+.category img {
+    width: 125px;
+    height: 125px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+
+    background: rgba( 100, 100, 100, 0.1 );
+    box-shadow: 0 8px 100px 0 rgba(33, 42, 160, 0.8);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+}
+
+
+.category a {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.category .delete-btn{
+    position: absolute;
+    z-index: 5;
+    top: -10px;
+    right: -10px;
+    background-color: #dc3545;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.category .delete-btn:hover{
+    background-color: #ff0019;
+    transition: background-color 0.3s;
+}
+
+.category .update-btn{
+    position: absolute;
+    z-index: 5;
+    bottom: 15px;
+    right: -10px;
+    background-color: #ffc107;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category .update-btn img{
+    width: 13px;
+    height: 13px;
+}
+
+.category .update-btn:hover{
+    background-color: #ffc720;
+    transition: background-color 0.3s;
+}

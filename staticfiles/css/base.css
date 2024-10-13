@@ -1,0 +1,13 @@
+/** Estilos para base.html */
+
+body {
+    color: white;
+    position: relative;
+    background-color: #0d1117;
+    font-family: "Roboto", sans-serif;
+}
+
+img {
+    object-fit: cover;
+}
+

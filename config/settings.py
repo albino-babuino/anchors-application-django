@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'anchorsapp', #? app anchorsapp
     'user_auth', #? app user_auth
     'livereload', #? app livereload para recargar la página automáticamente en desarrollo (se ejecuta con el comando python manage.py livereload en una terminal y en la otra python manage.py runserver)
+    'whitenoise.runserver_nostatic', #? app whitenoise para servir archivos estáticos en producción 
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'livereload.middleware.LiveReloadScript', #? Middleware para recargar la página automáticamente en desarrollo
+    "django.middleware.security.SecurityMiddleware", #? Middleware de seguridad (Necesario para el paquete whitenoise)
+    "whitenoise.middleware.WhiteNoiseMiddleware", #? Middleware para servir archivos estáticos en producción (neceario para el paquete whitenoise)
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -126,7 +129,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static'] #? Ruta/s de la/s carpeta/s static
-
+STATIC_ROOT = BASE_DIR / 'staticfiles' #? Ruta de la carpeta staticfiles. Esto es para recolectar los estáticos para producción con el comando python manage.py collectstatic
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" #? Configuración para servir archivos estáticos en producción (necesario para el paquete whitenoise)
 MEDIA_URL = 'media/' #? Url pública del navegador para los archivos multimedia
 MEDIA_ROOT = BASE_DIR / 'media' #? Ubicación de los archivos multimedia
 

@@ -1,0 +1,48 @@
+#toggle-checkbox-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 45px;
+	height: 25px;
+	background: rgba(255, 255, 255, 0.5);
+	display: block;
+	border-radius: 20px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 1.5px;
+	left: 1.5px;
+	width: 22px;
+	height: 22px;
+	background: #fff;
+	border-radius: 45px;
+	transition: 0.3s;
+}
+
+input:checked + label {
+	background: #dc3545;
+}
+
+input:checked + label:after {
+	left: calc(100% - 1.25px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 16.25px;
+}
+
