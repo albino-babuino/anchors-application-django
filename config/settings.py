@@ -28,8 +28,8 @@ DEBUG = True
 # DEBUG = False
 
 # ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'web-production-4c67.up.railway.app'] #? Host de Railway de producción
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'web-production-4c67.up.railway.app'] #? Host de Railway de producción
 
 
 # Application definition
