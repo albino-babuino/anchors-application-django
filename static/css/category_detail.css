@@ -173,6 +173,11 @@ main section {
     height: 75px;
     border-radius: 5px;
     margin-bottom: 5px;
+
+    background: rgba( 100, 100, 100, 0 );
+    box-shadow: 0 8px 100px 0 rgba(33, 42, 160, 0.8);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
 }
 
 .category a {
