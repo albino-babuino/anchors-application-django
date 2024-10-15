@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic', #? app whitenoise para servir archivos estáticos en producción 
     'anchorsapp', #? app anchorsapp
     'user_auth', #? app user_auth
     'livereload', #? app livereload para recargar la página automáticamente en desarrollo (se ejecuta con el comando python manage.py livereload en una terminal y en la otra python manage.py runserver)
