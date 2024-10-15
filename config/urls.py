@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('home.urls')), #? Agregar la ruta de la app home
     path('', include('anchorsapp.urls')), #? Agregar la ruta de la app anchorsapp
     path('', include('user_auth.urls')), #? Agregar la ruta de la app user_auth
 ]
