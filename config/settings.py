@@ -24,8 +24,8 @@ TEMPLATE_DIR = BASE_DIR / 'templates' #? Ruta de la carpeta templates
 SECRET_KEY = 'django-insecure-2)g((q_0abp!ra)9z=dt0*0)+v*1q+15d@3zuuvdc4bdjdzsfr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['*']
