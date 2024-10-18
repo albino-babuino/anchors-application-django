@@ -26,6 +26,4 @@ urlpatterns = [
     path('', include('user_auth.urls')), #? Agregar la ruta de la app user_auth
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #? Para que se muestren los archivos multimedia (imágenes, vídeos...) en el navegador
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #? Para que se muestren los archivos multimedia (imágenes, vídeos...) en el navegador
