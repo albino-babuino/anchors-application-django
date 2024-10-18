@@ -1,114 +1,115 @@
-main{
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+main {
+	min-height: 70vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
-.home-titles{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 70vw;
+.home-titles {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	max-width: 70vw;
 }
 
-h1{
-    font-size: clamp(3rem, 12vw, 7rem);
-    color: #f0f6fc;
-    text-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
-    font-weight: 600;
-    text-align: left;
-    margin-bottom: 1rem;
+h1 {
+	font-size: clamp(3rem, 12vw, 7rem);
+	color: #f0f6fc;
+	text-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+	font-weight: 600;
+	text-align: left;
+	margin-bottom: 1rem;
 }
 
-h3{
-    font-size: clamp(0.9rem, 2.5vw, 2rem);
-    color: #b6bbc1;
-    text-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
-    font-weight: 200;
-    text-align: left;
-
+h3 {
+	font-size: clamp(0.9rem, 2.5vw, 2rem);
+	color: #b6bbc1;
+	text-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+	font-weight: 200;
+	text-align: left;
 }
 
-.home-butons{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.home-butons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 
-.button{
-    padding: 1rem 4rem;
-    border-radius: 5px;
-    color: white;
-    font-size: 1rem;
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
+.button {
+	padding: 1rem 4rem;
+	border-radius: 5px;
+	color: white;
+	font-size: 1rem;
+	text-decoration: none;
+	text-align: center;
+	font-weight: bold;
 }
 
-.btn-login{
-    background-color: #6e40c9;
-    box-shadow: 0 0 0 0 #6e40c9;
-    transition: box-shadow 0.5s;
+.btn-login {
+	background-color: #6e40c9;
+	box-shadow: 0 0 0 0 #6e40c9;
+	transition: box-shadow 0.5s;
 }
 
-.btn-login:hover{
-    box-shadow: 0 10px 30px 5px #6e40c9;
-    transition: box-shadow 0.3s;
+.btn-login:hover {
+	box-shadow: 0 10px 30px 5px #6e40c9;
+	transition: box-shadow 0.3s;
 }
 
-.btn-register{
-    background-color: none;
-    border: 2px solid #6e40c9;
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
-    transition: box-shadow 0.5s;
-    transition: border box-shadow 0.5s;
+.btn-register {
+	background-color: none;
+	border: 2px solid #6e40c9;
+	box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+	transition: box-shadow 0.5s;
+	transition: border box-shadow 0.5s;
 }
 
-.btn-register:hover{
-    border: 2px solid white;
-    box-shadow: 0 5px 20px 0px rgba(255, 255, 255, 0.3);
-    transition: box-shadow 0.3s;
-    transition: border 0.3s;
+.btn-register:hover {
+	border: 2px solid white;
+	box-shadow: 0 5px 20px 0px rgba(255, 255, 255, 0.3);
+	transition: box-shadow 0.3s;
+	transition: border 0.3s;
 }
 
-#video-tutorial-link{
-    color: rgba(133, 255, 47, 0.9);
-    font-size: 0.8rem;
-    font-weight: 300;
+#video-tutorial-link {
+	color: rgba(133, 255, 47, 0.9);
+	font-size: 0.8rem;
+	font-weight: 300;
+	text-decoration: underline;
 }
 
-#video-tutorial-link:hover{
-    text-decoration: underline;
+#video-tutorial-link:hover {
+	text-decoration: none;
 }
 
 /* Media queries */
-@media screen and (max-width: 500px){
-    .home-titles{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        max-width: 90vw;
-    }
+@media screen and (max-width: 500px) {
+	.home-titles {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		max-width: 90vw;
+	}
 
-    h1, h3{
-        text-align: center;
-    }
+	h1,
+	h3 {
+		text-align: center;
+	}
 
-    .home-buttons{
-        flex-direction: column;
-        width: 90vw;
-    }
-    
-    .button{
-        margin: 0.5rem;
-        display: block;
-    }
+	.home-buttons {
+		flex-direction: column;
+		width: 90vw;
+	}
 
-    .button{
-        width: 100%;
-    }
+	.button {
+		margin: 0.5rem;
+		display: block;
+	}
+
+	.button {
+		width: 100%;
+	}
 }
