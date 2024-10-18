@@ -145,8 +145,8 @@ if DEBUG:
     MEDIA_URL = '/media/' #? Url pública del navegador para los archivos multimedia
     MEDIA_ROOT = BASE_DIR / 'media' #? Ubicación de los archivos multimedia
 else:
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = BASE_DIR / 'media' 
+    MEDIA_URL = '/app/media/'
+    MEDIA_ROOT = BASE_DIR / 'app/media' 
 
 
 # Default primary key field type
