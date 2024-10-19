@@ -39,6 +39,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'web-production-4c67.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
+    "admin_interface", #? django-admin-interface
+    "colorfield", #? django-admin-interface
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
