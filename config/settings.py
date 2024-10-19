@@ -39,7 +39,6 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'web-production-4c67.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin', #? app jazzmin para el panel de administración
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
