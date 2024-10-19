@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'web-production-4c67.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin', #? app jazzmin para el panel de administración
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -145,8 +146,8 @@ if DEBUG:
     MEDIA_URL = '/media/' #? Url pública del navegador para los archivos multimedia
     MEDIA_ROOT = BASE_DIR / 'media' #? Ubicación de los archivos multimedia
 else:
-    MEDIA_URL = '/app/media/'
-    MEDIA_ROOT = BASE_DIR / 'app/media' 
+    MEDIA_URL = '/media/' 
+    MEDIA_ROOT = BASE_DIR / 'media' 
 
 
 # Default primary key field type
