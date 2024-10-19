@@ -162,3 +162,5 @@ LOGOUT_REDIRECT_URL = '/'  #? Redirige a la página de login después de cerrar 
 
 CSRF_TRUSTED_ORIGINS = ['http://*', 'https://web-production-4c67.up.railway.app'] #? Dominio http para localhost, y dominio de producción para el uso de CSRF
 
+X_FRAME_OPTIONS = "SAMEORIGIN" #? django-admin-interface
+SILENCED_SYSTEM_CHECKS = ["security.W019"] #? django-admin-interface
