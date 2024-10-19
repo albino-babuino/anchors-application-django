@@ -175,5 +175,4 @@ cython_debug/
 
 .DS_Store
 
-# staticfiles/
-staticfiles/vendor
+staticfiles/
