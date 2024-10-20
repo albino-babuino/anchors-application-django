@@ -162,7 +162,7 @@ LOGIN_URL = 'login'  #? Redirige a la vista de login si el usuario no está aute
 LOGIN_REDIRECT_URL = '/categories/'  #? Redirige a la vista principal después de iniciar sesión
 LOGOUT_REDIRECT_URL = '/'  #? Redirige a la página de login después de cerrar sesión
 
-CSRF_TRUSTED_ORIGINS = ['http://*', 'https://web-production-4c67.up.railway.app'] #? Dominio http para localhost, y dominio de producción para el uso de CSRF
+CSRF_TRUSTED_ORIGINS = ['http://*', 'https://anchorsapp.up.railway.app'] #? Dominio http para localhost, y dominio de producción para el uso de CSRF
 
 X_FRAME_OPTIONS = "SAMEORIGIN" #? django-admin-interface
 SILENCED_SYSTEM_CHECKS = ["security.W019"] #? django-admin-interface
