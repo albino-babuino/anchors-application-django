@@ -26,7 +26,7 @@ TEMPLATE_DIR = BASE_DIR / 'templates' #? Ruta de la carpeta templates
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2)g((q_0abp!ra)9z=dt0*0)+v*1q+15d@3zuuvdc4bdjdzsfr'
+SECRET_KEY = os.getenv('SECRET_KEY') #? Variable de entorno para la clave secreta (debe definirse en el servidor de producción manualmente)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True #? En desarrollo
