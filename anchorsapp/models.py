@@ -19,7 +19,7 @@ class Category(models.Model):
 class Anchor(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  # Relación con el usuario
     name = models.CharField(max_length=50, verbose_name='Nombre')
-    link = models.CharField(max_length=250, verbose_name='Enlace')
+    link = models.URLField(max_length=250, verbose_name='Enlace')
     image = models.ImageField(upload_to='anchor', verbose_name='Imagen')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
