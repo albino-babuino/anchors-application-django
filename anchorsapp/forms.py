@@ -19,9 +19,15 @@ class CategoryForm(forms.ModelForm):
     def clean_image(self):
         image = self.cleaned_data.get('image')
         if image:
-            # Verifica si la imagen supera los 0.5 MB (524288 bytes)
-            if image.size > 0.5 * 1024 * 1024:  # 0.5 MB en bytes
-                raise forms.ValidationError("El tamaño de la imagen no debe exceder los 0.5 MB.")
+            # Verifica si la imagen supera los 250 kB (250 * 1024 bytes)
+            if image.size > 250 * 1024:  # 250 kB en bytes
+                raise forms.ValidationError("El tamaño de la imagen no debe exceder los 250 kB.")
+            
+            # Verifica la extensión del archivo
+            file_extension = image.name.split('.')[-1].lower()
+            if file_extension not in ['jpg', 'jpeg', 'gif', 'webp', 'png']:  # Agregado 'png'
+                raise forms.ValidationError("Solo se permiten archivos con formatos .jpg, .jpeg, .gif, .webp y .png.")
+        
         return image
 
 class AnchorForm(forms.ModelForm):
@@ -32,9 +38,15 @@ class AnchorForm(forms.ModelForm):
     def clean_image(self):
         image = self.cleaned_data.get('image')
         if image:
-            # Verifica si la imagen supera los 0.5 MB (524288 bytes)
-            if image.size > 0.5 * 1024 * 1024:  # 0.5 MB en bytes
-                raise forms.ValidationError("El tamaño de la imagen no debe exceder los 0.5 MB.")
+            # Verifica si la imagen supera los 250 kB (250 * 1024 bytes)
+            if image.size > 250 * 1024:  # 250 kB en bytes
+                raise forms.ValidationError("El tamaño de la imagen no debe exceder los 250 kB.")
+            
+            # Verifica la extensión del archivo
+            file_extension = image.name.split('.')[-1].lower()
+            if file_extension not in ['jpg', 'jpeg', 'gif', 'webp', 'png']:  # Agregado 'png'
+                raise forms.ValidationError("Solo se permiten archivos con formatos .jpg, .jpeg, .gif, .webp y .png.")
+        
         return image
 
 
