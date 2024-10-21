@@ -7,6 +7,20 @@
 {% block content %}
 <div class="form-page-container">
 	<h2>Actualizar Enlace</h2>
+
+	<!-- Mostrar mensajes de error -->
+	{% if messages %}
+	<div class="messages">
+		{% for message in messages %}
+		<div
+			class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+		>
+			{{ message }}
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+
 	<form method="POST" enctype="multipart/form-data" class="form">
 		{% csrf_token %} {{ form.as_p }}
 		<button type="submit">Guardar Cambios</button>
@@ -15,5 +29,5 @@
 	<a href="{% url 'category_detail' object.category.pk %}"
 		>Volver a la categoría</a
 	>
-	{% endblock %}
 </div>
+{% endblock %}
