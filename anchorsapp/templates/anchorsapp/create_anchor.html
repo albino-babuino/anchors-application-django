@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}{% load static %}
+{% extends "base/base.html" %} {% load static %}
 <!-- Estilos específicos -->
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/forms.css' %}" />
@@ -7,6 +7,20 @@
 {% block content %}
 <div class="form-page-container">
 	<h2>Crear Nuevo Enlace de {{ category.name }}</h2>
+
+	<!-- Mostrar mensajes de error -->
+	{% if messages %}
+	<div class="messages">
+		{% for message in messages %}
+		<div
+			class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+		>
+			{{ message }}
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+
 	<form method="POST" enctype="multipart/form-data" class="form">
 		{% csrf_token %} {{ form.as_p }}
 		<!-- Renderiza el formulario -->
